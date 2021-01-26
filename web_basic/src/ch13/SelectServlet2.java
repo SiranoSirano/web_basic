@@ -29,7 +29,7 @@ public class SelectServlet2 extends HttpServlet {
 
 			//オブジェクト宣言
 
-			AccountDao2 objDao2 = new AccountDao2();
+			SearchDao objDao2 = new SearchDao();
 
 			//全検索メソッドを呼び出し
 
@@ -51,7 +51,7 @@ public class SelectServlet2 extends HttpServlet {
 
 			request.setAttribute("error", error);
 
-			request.getRequestDispatcher("/view/ch13/list2.jsp").forward(request, response);
+			request.getRequestDispatcher("/Search.jsp").forward(request, response);
 
 		}
 
