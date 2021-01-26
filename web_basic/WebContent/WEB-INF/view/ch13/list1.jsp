@@ -1,5 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8"%>
-<%@page import="java.util.ArrayList,web_basic.ch13.AccountInfo"%>
+<%@page import="java.util.ArrayList,ch13.AccountInfo"%>
 
 <%
 ArrayList<AccountInfo> list = (ArrayList<AccountInfo>) request.getAttribute("list");
