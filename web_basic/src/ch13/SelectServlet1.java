@@ -41,7 +41,7 @@ public class SelectServlet1 extends HttpServlet {
 			error = "予期せぬエラーが発生しました。<br>" + e;
 		} finally {
 			request.setAttribute("error", error);
-			request.getRequestDispatcher("/view/ch13/list1.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/view/ch13/list1.jsp").forward(request, response);
 		}
 
 	}
@@ -50,7 +50,7 @@ public class SelectServlet1 extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		this.doGet(request, response);
 	}
 
 }

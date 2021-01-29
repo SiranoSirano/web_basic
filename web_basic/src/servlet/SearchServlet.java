@@ -1,4 +1,4 @@
-package ch13;
+package servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class SelectServlet2 extends HttpServlet {
+import dao.SearchDao;
+import model.Employee;
+
+public class SearchServlet extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -21,27 +24,29 @@ public class SelectServlet2 extends HttpServlet {
 
 			//パラメータの取得
 
-			String id = request.getParameter("id");
+			String name = request.getParameter("NAME");
 
 			//配列宣言
 
-			ArrayList<AccountInfo> list = new ArrayList<AccountInfo>();
+			ArrayList<Employee> list = new ArrayList<Employee>();
 
 			//オブジェクト宣言
+			//obj Dao変える？
 
-			AccountDao2 objDao2 = new AccountDao2();
+			SearchDao objDao2 = new SearchDao();
 
 			//全検索メソッドを呼び出し
 
-			list = objDao2.search(id);
+			list = objDao2.search(name);
 
 			//検索結果を持ってlist.jspにフォワード
+			//employyじゃなくていいのか
 
 			request.setAttribute("list", list);
 
 		} catch (IllegalStateException e) {
 
-			error = "DB接続エラーの為、一覧表示はできませんでした。";
+			error = "DB接続エラーの為、一覧表示できませんでした。";
 
 		} catch (Exception e) {
 
@@ -51,7 +56,7 @@ public class SelectServlet2 extends HttpServlet {
 
 			request.setAttribute("error", error);
 
-			request.getRequestDispatcher("/Search.jsp").forward(request, response);
+			request.getRequestDispatcher("search.jsp").forward(request, response);
 
 		}
 

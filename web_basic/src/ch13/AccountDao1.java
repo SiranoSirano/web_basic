@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class AccountDao1 {
 
 	//	DB接続に使用する情報
-	private final String URL = "jdbc:h2:~/社員情報管理システムDB接続";
+	private final String URL = "jdbc:h2:tcp:~/社員情報管理システムDB接続";
 	private final String USER = "sa";
 	private final String PASS = "";
 

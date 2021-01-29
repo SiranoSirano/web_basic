@@ -1,44 +1,17 @@
-package ch13;
+package dao;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
-import java.util.*;
+import model.Employee;
 
-public class AccountDao2 {
-
-	//接続用の情報をフィールドに定数として定義
-
-	private static String RDB_DRIVE = "com.mysql.jdbc.Driver";
-
-	private static String URL = "jdbc:mysql://localhost/accountdb";
-
-	private static String USER = "root";
-
-	private static String PASS = "root123";
-
-	//データベース接続を行うメソッド
-
-	public static Connection getConnection() {
-
-		try {
-
-			Class.forName(RDB_DRIVE);
-
-			Connection con = DriverManager.getConnection(URL, USER, PASS);
-
-			return con;
-
-		} catch (Exception e) {
-
-			throw new IllegalStateException(e);
-
-		}
-
-	}
-
+public class SearchDao extends DAO  {
 	//データベースから全てのアカウント情報の検索を行うメソッド
 
-	public ArrayList<AccountInfo> search(String id) {
+	public ArrayList<Employee> search(String id) {
 
 		//変数宣言
 
@@ -48,15 +21,15 @@ public class AccountDao2 {
 
 		//return用オブジェクトの生成
 
-		ArrayList<AccountInfo> list = new ArrayList<AccountInfo>();
+		ArrayList<Employee> list = new ArrayList<Employee>();
 
 		//SQL文
 
-		String sql = "SELECT * FROM account WHERE id LIKE '%" + id + "%'";
+		String sql = "SELECT * FROM Employee WHERE name LIKE '%" + id + "%'";
 
 		try {
 
-			con = getConnection();
+			con = this.getConnection();
 
 			smt = con.createStatement();
 
@@ -65,10 +38,11 @@ public class AccountDao2 {
 			ResultSet rs = smt.executeQuery(sql);
 
 			//検索結果を配列に格納
+			//setを入れる
 
 			while (rs.next()) {
 
-				AccountInfo accountinfo = new AccountInfo();
+				Employee employee = new Employee();
 
 				accountinfo.setId(rs.getString("id"));
 
@@ -78,7 +52,7 @@ public class AccountDao2 {
 
 				accountinfo.setAuthority(rs.getString("authority"));
 
-				list.add(accountinfo);
+				list.add(employee);
 
 			}
 

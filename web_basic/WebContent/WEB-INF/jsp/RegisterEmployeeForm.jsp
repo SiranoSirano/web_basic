@@ -3,7 +3,7 @@
 
 <head>
 
-<title>データを登録する</title>
+<title>社員データを登録する</title>
 
 </head>
 
@@ -15,10 +15,10 @@
 
 		<hr style="height: 3; background-color: #0000ff" />
 
-		<br> 登録する情報を入力してください。
+		<br> 登録する社員情報を入力してください。
 
-		<form action="<%=request.getContextPath()%>/web_basic/src/ch13/InsertServlet">
-
+		<form action="<%=request.getContextPath()%>/RegisterEmployeeServlet">
+<--! ここの名前とフォーム内のテキスト、どういったフォームにするかを変更する !-->
 			<table style="margin: 0 auto">
 
 				<tr>
