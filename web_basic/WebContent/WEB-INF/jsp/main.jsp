@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import ="model.*,servlet.*,dao.*,java.util.List" %>
+<%@ page import ="modeltest.*,servlettest.*,daotest.*,java.util.List" %>
 <%
 //セッションスコープに保存されたユーザー情報を取得
 Login loginUser = (Login) session.getAttribute("loginUser");
